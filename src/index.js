@@ -7,8 +7,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./Services/Reducer/rootReducer";
 import { LikeProvider } from "./context/LikeContext";
 const store = createStore(rootReducer);
-// console.log("STORE DATA", store);
-//
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

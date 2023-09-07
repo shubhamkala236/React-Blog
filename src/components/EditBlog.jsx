@@ -20,6 +20,11 @@ const EditBlog = (props) => {
   const [blogId, setBlogId] = useState(id);
   const [like, setLike] = useState(false);
 
+    //validation Error
+  const [titleError, setTitleError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
+  const [contentError, setContentError] = useState("");
+
   
   useEffect(()=>{
     console.log("USE_EFFECT");
@@ -43,6 +48,37 @@ const EditBlog = (props) => {
   const handleEditSubmit= (e)=>{
     e.preventDefault();
 
+    let isValid = true;
+
+    // Reset previous validation errors
+    setTitleError("");
+    setCategoryError("");
+    setContentError("");
+   
+    //Title Error
+    if(title.length<=3)
+    {
+      setTitleError("Title length should be greater than 3 && is required");
+      isValid = false;
+    }
+
+    //category error
+    if (category.length<=3) {
+      setCategoryError("Title length should be greater than 3 && is required");
+      isValid = false;
+    }
+
+    //content error
+    if (content.length<=3) {
+      setContentError("Content length should be greater than 3 && is required");
+      isValid = false;
+    }
+    
+    if(!isValid)
+    {
+      return;
+    }
+
     //Now edit the blog data
     const updatedBlog = {
       id:blogId,
@@ -61,8 +97,8 @@ const EditBlog = (props) => {
 
   return (
     <div className="d-flex flex-column">
-      <Link to='/'><button type="button" className="btn btn-primary m-auto p-auto">Back</button></Link>
-      <h1>EDIT DETAILS</h1>
+      <Link to='/'><button type="button" className="btn btn-primary mt-4 p-auto">Back</button></Link>
+      <h3 className='text-center'>Edit Blog</h3>
       <form onSubmit={(e)=>handleEditSubmit(e)} className="form m-5">
         <div className="form-group m-3">
           <label htmlFor="Title">Title</label>
@@ -75,6 +111,7 @@ const EditBlog = (props) => {
             value={title}
             onChange={(e)=>setTitle(e.target.value)}
           />
+          <div className="text-danger">{titleError?titleError:null}</div>
         </div>
 
         <div className="form-group m-3">
@@ -87,11 +124,13 @@ const EditBlog = (props) => {
             value={category}
             onChange={(e)=>setCategory(e.target.value)}
           />
+          <div className="text-danger">{categoryError?categoryError:null}</div>
         </div>
 
         <div className="form-group m-3">
             <label htmlFor="Content">Content</label>
             <textarea className="form-control" id="Content" rows="15" placeholder="Enter blog..." value={content} onChange={(e)=>setContent(e.target.value)}></textarea>
+            <div className="text-danger">{contentError?contentError:null}</div>
         </div>
 
         <button type='submit' className="btn btn-primary m-3">

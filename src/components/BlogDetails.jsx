@@ -38,7 +38,7 @@ const BlogDetails = (props) => {
   }
 
   return (
-    <div>
+    <div className="mt-5">
       <Link to="/">
         <button
           type="button"

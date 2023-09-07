@@ -10,9 +10,45 @@ const CreateBlog = (props) => {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
 
+  //validation Error
+  const [titleError, setTitleError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
+  const [contentError, setContentError] = useState("");
+
+
   //Handle Submit
   const handleSubmit = (e) =>{
     e.preventDefault();
+    let isValid = true;
+
+    // Reset previous validation errors
+    setTitleError("");
+    setCategoryError("");
+    setContentError("");
+   
+    //Title Error
+    if(title.length<=3)
+    {
+      setTitleError("Title length should be greater than 3 && is required");
+      isValid = false;
+    }
+
+    //category error
+    if (category.length<=3) {
+      setCategoryError("Title length should be greater than 3 && is required");
+      isValid = false;
+    }
+
+    //content error
+    if (content.length<=3) {
+      setContentError("Content length should be greater than 3 && is required");
+      isValid = false;
+    }
+    
+    if(!isValid)
+    {
+      return;
+    }
 
     //create a new blog object to pass it into action method
     const newBlog = {
@@ -38,7 +74,8 @@ const CreateBlog = (props) => {
 
   return (
     <div className="d-flex flex-column">
-      <Link to='/'><button type="button" className="btn btn-primary m-auto p-auto">Back</button></Link>
+      <Link to='/'><button type="button" className="btn btn-primary mt-4 p-auto">Back</button></Link>
+      <h3 className='text-center'>Create Blogs</h3>
       <form className="form m-5" onSubmit={handleSubmit}>
         <div className="form-group m-3">
           <label htmlFor="Title">Title</label>
@@ -52,6 +89,7 @@ const CreateBlog = (props) => {
             onChange={(e)=>{setTitle(e.target.value)}}
             required
           />
+          <div className="text-danger">{titleError?titleError:null}</div>
         </div>
 
         <div className="form-group m-3">
@@ -65,11 +103,13 @@ const CreateBlog = (props) => {
             onChange={(e)=>{setCategory(e.target.value)}}
             required
           />
+          <div className="text-danger">{categoryError?categoryError:null}</div>
         </div>
 
         <div className="form-group m-3">
             <label htmlFor="Content">Content</label>
             <textarea className="form-control" id="Content" rows="15" value={content} onChange={(e)=>{setContent(e.target.value)}} required placeholder="Enter blog..."></textarea>
+          <div className="text-danger">{contentError?contentError:null}</div>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
