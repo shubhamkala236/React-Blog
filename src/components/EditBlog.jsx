@@ -99,7 +99,7 @@ const EditBlog = (props) => {
     <div className="d-flex flex-column">
       <Link to='/'><button type="button" className="btn btn-primary mt-4 p-auto">Back</button></Link>
       <h3 className='text-center'>Edit Blog</h3>
-      <form onSubmit={(e)=>handleEditSubmit(e)} className="form m-5">
+      <form onSubmit={(e)=>handleEditSubmit(e)} className="form m-5 edit-form">
         <div className="form-group m-3">
           <label htmlFor="Title">Title</label>
           <input

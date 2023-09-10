@@ -6,3 +6,25 @@
     text-decoration: none;
     border: none;
 }
+
+.my-card{
+    background: rgb(250,254,147);
+    background: linear-gradient(90deg, rgba(20, 234, 241, 0.3) 35%, rgb(22, 240, 167,0.3) 100%);
+}
+
+.blog-detail{
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+
+.create-form{
+    background-color: aliceblue;
+    border: 1px solid rgba(66, 23, 221, 0.2);
+    border-radius: 12px;
+}
+
+.edit-form{
+    background-color: aliceblue;
+    border: 1px solid rgba(66, 23, 221, 0.2);
+    border-radius: 12px;
+}

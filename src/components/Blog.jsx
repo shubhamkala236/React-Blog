@@ -24,7 +24,7 @@ const Blog = (props) => {
 
       {
         blogList.map((item)=>(
-          <Card key={item.id} className="m-3" style={{ maxHeight: "15rem"}}>
+          <Card key={item.id} className="m-3 my-card" style={{ maxHeight: "15rem"}}>
             <Card.Body>
               <Card.Title>{item.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">

@@ -47,7 +47,7 @@ const BlogDetails = (props) => {
           Back
         </button>
       </Link>
-      <div className="blog-detail d-flex flex-column">
+      <div className="blog-detail d-flex flex-column m-2 p-1">
         <div className="details-nav d-flex justify-content-end">
           <button onClick={()=>toggleLike(blogData.id)} className="btn m-1 btn-light shadow border-0" type="button">
             {likes[blogData.id] ? <FcLike style={{ fontSize: '1.5rem' }}/> : <FcLikePlaceholder style={{ fontSize: '1.5rem' }}/>}

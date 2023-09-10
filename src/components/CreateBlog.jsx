@@ -76,7 +76,7 @@ const CreateBlog = (props) => {
     <div className="d-flex flex-column">
       <Link to='/'><button type="button" className="btn btn-primary mt-4 p-auto">Back</button></Link>
       <h3 className='text-center'>Create Blogs</h3>
-      <form className="form m-5" onSubmit={handleSubmit}>
+      <form className="form create-form m-5" onSubmit={handleSubmit}>
         <div className="form-group m-3">
           <label htmlFor="Title">Title</label>
           <input
@@ -111,7 +111,7 @@ const CreateBlog = (props) => {
             <textarea className="form-control" id="Content" rows="15" value={content} onChange={(e)=>{setContent(e.target.value)}} required placeholder="Enter blog..."></textarea>
           <div className="text-danger">{contentError?contentError:null}</div>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary m-3">
           Submit
         </button>
       </form>
